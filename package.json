@@ -1,0 +1,14 @@
+{
+  "name": "@achil/async-run-ended",
+  "version": "1.0.0",
+  "description": "notify through promise when the execution of async code has finished",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "Achilleas Kiritsakas",
+  "license": "MIT"
+}
