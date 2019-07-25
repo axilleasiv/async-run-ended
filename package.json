@@ -10,5 +10,9 @@
     "node.js"
   ],
   "author": "Achilleas Kiritsakas",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axilleasiv/async-run-ended"
+  }
 }
