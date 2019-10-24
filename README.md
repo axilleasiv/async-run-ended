@@ -1,4 +1,4 @@
-Check if your node.js program has finished the async code execution (async functions, promises, setTimeout etc).
+Check if your node.js program has finished the async code execution (async functions, promises, setTimeout etc), when Inter Process Communication (IPC) in Node.js keeps the connection between child and parent process, alive. It is not recommended to be used for production.
 
 ## Installation
 
