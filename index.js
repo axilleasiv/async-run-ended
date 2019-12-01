@@ -1,22 +1,25 @@
-var async_hooks = require('async_hooks');
-var active = new Map();
-var hook = async_hooks
-  .createHook({
-    init(asyncId, type) {
-      if (type === 'TIMERWRAP' || type === 'TickObject') return;
-      active.set(asyncId, { type });
-    },
-    destroy(asyncId) {
-      active.delete(asyncId);
-    },
-    promiseResolve(asyncId) {
-      active.delete(asyncId);
-    }
-  })
-  .enable();
+const async_hooks = require('async_hooks');
+const hook = async_hooks.createHook({
+  init(asyncId, type) {
+    if (type === 'TIMERWRAP' || type === 'TickObject') return;
+    active.set(asyncId, { type });
+  },
+  destroy(asyncId) {
+    active.delete(asyncId);
+  },
+  promiseResolve(asyncId) {
+    active.delete(asyncId);
+  }
+});
+let active;
 
-function check(time) {
-  var hookTimer, resolve;
+const init = () => {
+  active = new Map();
+  hook.enable();
+};
+
+const check = time => {
+  let hookTimer, resolve;
 
   if (active.size === 0) {
     hook.disable();
@@ -37,8 +40,14 @@ function check(time) {
   return new Promise(r => {
     resolve = r;
   });
-}
+};
 
 module.exports = {
-  check
+  init() {
+    init();
+
+    return {
+      check
+    };
+  }
 };
